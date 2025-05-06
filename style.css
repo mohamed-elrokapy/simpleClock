@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+div {
+  background-color: rgb(10, 10, 54);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 1em;
+  background-image: url(360_F_852510478_KdKJ1xGmlHICE8TD3QM68W6m7m1E7fHT.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1 {
+  color: white;
+}
+h2 {
+  font-size: 3em;
+}
