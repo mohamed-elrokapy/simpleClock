@@ -3,14 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A simple clock with an analog dial and a digital readout, switchable between 12 and 24 hour time." />
+    <meta name="theme-color" content="#0a1124" />
+    <title>Clock</title>
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
   </head>
   <body>
-    <div>
-      <h1>ping pang</h1>
-      <h2></h2>
-    </div>
+    <main>
+      <h1 class="eyebrow">Clock</h1>
+
+      <svg class="dial" id="dial" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+        <circle class="dial-face" cx="100" cy="100" r="96" />
+        <g id="ticks"></g>
+        <line class="hand hand-hour" id="hand-hour" x1="100" y1="106" x2="100" y2="60" />
+        <line class="hand hand-minute" id="hand-minute" x1="100" y1="108" x2="100" y2="34" />
+        <line class="hand hand-second" id="hand-second" x1="100" y1="116" x2="100" y2="24" />
+        <circle class="hub" cx="100" cy="100" r="4.5" />
+      </svg>
+
+      <p class="readout">
+        <time id="time" datetime="">
+          <span id="digits" class="digits">--:--:--</span>
+          <span id="period" class="period"></span>
+        </time>
+      </p>
+      <p class="date" id="date"></p>
+      <p class="zone" id="zone"></p>
+
+      <button type="button" id="format" class="format" aria-pressed="false">24-hour time</button>
+    </main>
 
     <script src="main.js"></script>
   </body>
