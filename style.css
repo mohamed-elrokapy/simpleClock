@@ -1,23 +1,98 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Clock: a night-sky dial. Deep navy, cool light type, one teal accent for the second hand. */
+:root {
+  --night: #0a1124;
+  --night-2: #131d3b;
+  --face: #0f1830;
+  --line: #3a4a7a;
+  --ink: #e8eefc;
+  --ink-soft: #a9b6d8;
+  --accent: #2ee6c5;
+  --font: "Avenir Next", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
 }
-div {
-  background-color: rgb(10, 10, 54);
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+  background: radial-gradient(90% 70% at 50% 0%, var(--night-2) 0%, var(--night) 65%) fixed;
+  color: var(--ink);
+  font-family: var(--font);
+}
+
+main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
-  gap: 1em;
-  background-image: url(360_F_852510478_KdKJ1xGmlHICE8TD3QM68W6m7m1E7fHT.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  text-align: center;
+  gap: 0.35rem;
+  width: 100%;
 }
-h1 {
-  color: white;
+
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 1.25rem;
 }
-h2 {
-  font-size: 3em;
+
+.dial {
+  width: min(72vw, 21rem);
+  height: auto;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.45));
+}
+.dial-face { fill: var(--face); stroke: var(--line); stroke-width: 2; }
+.tick { stroke: var(--ink-soft); stroke-width: 1; stroke-linecap: round; opacity: 0.7; }
+.tick-major { stroke: var(--ink); stroke-width: 2.4; opacity: 1; }
+.hand { stroke-linecap: round; }
+.hand-hour { stroke: var(--ink); stroke-width: 5; }
+.hand-minute { stroke: var(--ink); stroke-width: 3.2; }
+.hand-second { stroke: var(--accent); stroke-width: 1.6; }
+.hub { fill: var(--accent); stroke: var(--face); stroke-width: 2; }
+
+.readout { line-height: 1; }
+.digits {
+  font-size: clamp(2.6rem, 11vw, 5.5rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.period {
+  margin-left: 0.4rem;
+  font-size: clamp(1rem, 3.5vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.date { margin-top: 0.6rem; font-size: 1.1rem; color: var(--ink); }
+.zone { font-size: 0.9rem; color: var(--ink-soft); }
+
+.format {
+  margin-top: 1.75rem;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: transparent;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+  min-height: 2.75rem;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+.format:hover { background: rgba(255, 255, 255, 0.07); border-color: var(--ink-soft); }
+.format[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.format:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .format { transition: none; }
 }
